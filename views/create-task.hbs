@@ -1,0 +1,109 @@
+<div class="container">
+    <h3 class=" text-center">Create-task</h3>
+    <div class="box">
+        <div class="inbox">
+            {{!-- <form method="post" action="/"> --}}
+            <div class="inbox_menus">
+                <div class="inbox_menu">
+                    <div class="menu_list active_menu">
+                        <div class="menu_user">
+                            <div class="user_img"> <img src="https://ptetutorials.com/images/user-profile.png"
+                                    alt="sunil"> </div>
+                            <div class="user_ib">
+                                <div class="user_ib">
+                                    <h5>User：{{myUserName}}
+                                        <input id="userName" value={{myUserName}} type="hidden" value="">
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="menu_list active_menu text-center">
+                        <a href="/user" class="btn btn-raised btn-info">個人タスク</a>
+                    </div>
+                    <div class="menu_list active_menu text-center">
+                        <a href="/room" class="btn btn-raised btn-success">全体チャット</a>
+                    </div>
+                    <div class="menu_list active_menu text-center">
+                        <a href="/task" class="btn btn-raised btn-success">全体タスク</a>
+                    </div>
+                    <div class="menu_list active_menu text-center">
+                        <button type="button" onclick="location.href='/create-task'" class="btn btn-primary bmd-btn-fab bmd-btn-fab-sm">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                    <div class="menu_list active_menu text-center">
+                        <a href="/" class="btn btn-raised btn-danger">ログアウト</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="create_task">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">タスクを投稿しよう！</h5>
+
+                        <form method="post" action="/create-task">
+
+                            <div class="form-group .bmd-form-group">
+                                <!-- left unspecified, .bmd-form-group will be automatically added (inspect the code) -->
+                                <label for="formGroupExampleInput" class="bmd-label-floating">タスク名</label>
+                                <input type="text" class="form-control" id="title" name="title">
+                            </div>
+
+
+                            <div class="form-group .bmd-form-group">
+                                <label for="custom-select-1c">依頼先</label>
+                                <select name="des_userId" id="des_userId" class="custom-select custom-select-lg">
+                                    {{#each allUser}}
+                                    {{#with dataValues}}
+                                    <option value={{id}}>{{name}}</option>
+                                    {{/with}}
+                                    {{/each }}
+                                </select>
+                            </div>
+
+                            <div class="form-group .bmd-form-group">
+                                <!-- left unspecified, .bmd-form-group will be automatically added (inspect the code) -->
+                                <label for="formGroupExampleInput" class="bmd-label-floating">期限</label>
+                                <input type="text" id="input1" class="form-control" id="date" name="date">
+                            </div>
+
+                            <link rel="stylesheet"
+                                href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+                            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+                            <script
+                                src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+                            <script
+                                src="https://ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datepicker-ja.min.js"></script>
+                            <script>
+                                $(function () {
+                                    $.datepicker.setDefaults($.datepicker.regional["ja"]);
+                                    $("#input1").datepicker(
+                                        // ここに日付の表現記法YYYY-MM-DD
+                                    );
+                                });
+                            </script>
+
+                            <div class="form-group .bmd-form-group">
+                                <!-- left unspecified, .bmd-form-group will be automatically added (inspect the code) -->
+                                <label for="formGroupExampleInput" class="bmd-label-floating">メモ</label>
+                                <input type="text" class="form-control" id="info" name="info">
+                            </div>
+
+                            {{!-- じぶんのIDを送る --}}
+                            <input type="hidden" id="userId" name="userId" value={{user.id}}>
+
+                            <div class="menu_list active_menu text-center">
+                                <input type="button" value="タスク追加" class="btn btn-raised btn-info"
+                                    onclick="taskCreate()" />
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/javascripts/create.js"></script>

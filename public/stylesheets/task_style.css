@@ -1,0 +1,64 @@
+/*
+ * タスク画面に関する設定 -> 現段階では色とかmarginとか適当です．
+ * レスポンシブとか一切考えていません．
+ */
+
+/* とりあえず全体の中で初期化したいもの */
+
+
+.card {
+    margin: 1em;
+    /* background-color: PaleVioletRed; */
+}
+
+.destination_user_card {
+    background-color: PaleVioletRed;
+}
+
+.request_user_card {
+    background-color: DodgerBlue;
+}
+
+.card-header {
+    margin: initial;
+}
+
+.task_contents_box div{
+    margin: 1px;
+}
+
+.row {
+    margin: initial;
+}
+
+/* .card-body {
+    background-color: ;
+} */
+
+
+/*
+    main関連
+*/
+
+/* 各ユーザカラムのマージンを決めたい */
+.user_task {
+    padding-bottom: 1em;
+}
+
+.done_label {
+    width: 80px;
+}
+
+.card-header .btn {
+    width: 275px;
+}
+
+/* チャットに合わせるんだけどstyleでこれ書きたい．．． */
+.inbox{
+    height: 737px;
+}
+
+
+.task_status {
+    font-size: 15px;
+}
